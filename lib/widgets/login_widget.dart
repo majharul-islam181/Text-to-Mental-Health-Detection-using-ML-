@@ -41,13 +41,14 @@ Widget loginWidget(CountryCode countryCode, Function onCountryChange) {
               Expanded(
                   flex: 2,
                   child: InkWell(
-                    onTap: () => onCountryChange,
+                    onTap: () => onCountryChange(),
                     child: Container(
                       child: Row(
                         children: [
-                          Container(
+                          Expanded(
+                              child: Container(
                             child: countryCode.flagImage,
-                          ),
+                          )),
                           textWidget(text: countryCode.dialCode),
                           Icon(Icons.keyboard_arrow_down_rounded),
                         ],
@@ -67,7 +68,7 @@ Widget loginWidget(CountryCode countryCode, Function onCountryChange) {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: "Enter your mobile number",
-                        hintStyle: GoogleFonts.poppins(fontSize: 16),
+                        hintStyle: GoogleFonts.poppins(fontSize: 14),
                         border: InputBorder.none,
                       ),
                     ),

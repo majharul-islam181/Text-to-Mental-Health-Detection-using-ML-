@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   
   final countryPicker = const FlCountryCodePicker();
 
-  CountryCode countryCode = CountryCode(name: "Bangladesh", code: "bd", dialCode: '+88');
+  CountryCode countryCode = CountryCode(name: "Bangladesh", code: "BD", dialCode: '+880');
 
   @override
   Widget build(BuildContext context) {
