@@ -41,6 +41,10 @@ dependencies:
   google_fonts: ^3.0.1
   # country_picker: ^2.0.18
   fl_country_code_picker: ^0.0.4
+  pinput: ^2.2.16
+  firebase_core: ^2.4.0
+  firebase_auth: ^4.2.0
+  cloud_firestore: ^4.2.0
   
 
 dev_dependencies:

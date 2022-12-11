@@ -2,11 +2,13 @@
 
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mental/utils/app_constants.dart';
+import 'package:mental/views/otp_verification.dart';
 import 'package:mental/widgets/text_widget.dart';
 
-Widget loginWidget(CountryCode countryCode, Function onCountryChange) {
+Widget loginWidget(CountryCode countryCode, Function onCountryChange, Function onSubmit) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 5),
     child: Column(
@@ -65,6 +67,8 @@ Widget loginWidget(CountryCode countryCode, Function onCountryChange) {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextField(
+                      onSubmitted:(String? input)=> onSubmit(input),
+                      
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: "Enter your mobile number",
