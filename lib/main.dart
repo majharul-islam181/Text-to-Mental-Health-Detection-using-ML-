@@ -3,8 +3,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mental/controller/auth_controller.dart';
 import 'package:mental/firebase_options.dart';
 import 'package:mental/views/login_screen.dart';
+import 'package:mental/views/profile_settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +22,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
+    authController.decideRoute();
     final textTheme = Theme.of(context).textTheme;
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

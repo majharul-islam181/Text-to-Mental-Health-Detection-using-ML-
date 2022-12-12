@@ -1,10 +1,18 @@
+// ignore_for_file: avoid_print
+
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
-
 import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mental/models/user_model/user_model.dart';
+
+import '../views/home_screen.dart';
+import '../views/profile_settings.dart';
+import 'package:path/path.dart' as Path;
 
 class AuthController extends GetxController {
   String userUid = '';
@@ -12,6 +20,8 @@ class AuthController extends GetxController {
   int? resendTokenId;
   bool phoneAuthCheck = false;
   dynamic credentials;
+
+  var isProfileUploading = false.obs;
 
   phoneAuth(String phone) async {
     try {
@@ -50,57 +60,98 @@ class AuthController extends GetxController {
 
     log("LogedIn");
 
-    await FirebaseAuth.instance.signInWithCredential(credential);
+    // await FirebaseAuth.instance.signInWithCredential(credential);
 
-    // await FirebaseAuth.instance.signInWithCredential(credential).then((value) {
-    //   decideRoute();
-    // }).catchError((e) {
-    //   print("Error while sign In $e");
-    // });
+    await FirebaseAuth.instance.signInWithCredential(credential).then((value) {
+      decideRoute();
+    }).catchError((e) {
+      print("Error while sign In $e");
+    });
   }
 
-  // var isDecided = false;
+  var isDecided = false;
 
-  // decideRoute() {
-  //   if (isDecided) {
-  //     return;
-  //   }
-  //   isDecided = true;
-  //   print("called");
+  decideRoute() {
+    // if (isDecided) {
+    //   return;
+    // }
+    // isDecided = true;
+    // print("called");
 
-  //   ///step 1- Check user login?
-  //   User? user = FirebaseAuth.instance.currentUser;
+    ///step 1- Check user login?
+    User? user = FirebaseAuth.instance.currentUser;
 
-  //   if (user != null) {
-  //     /// step 2- Check whether user profile exists?
-  //     ///isLoginAsDriver == true means navigate it to the driver module
-  //     FirebaseFirestore.instance
-  //         .collection('users')
-  //         .doc(user.uid)
-  //         .get()
-  //         .then((value) {
+    if (user != null) {
+      /// step 2- Check whether user profile exists?
+      ///isLoginAsDriver == true means navigate it to the driver module
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get()
+          .then((value) {
+        ///isLoginAsDriver == true means navigate it to driver module
 
-  //       ///isLoginAsDriver == true means navigate it to driver module
-  //       if(isLoginAsDriver){
+        if (value.exists) {
+          Get.to(() => const HomeScreen());
+          print("Driver HOme Screen");
+        } else {
+          Get.to(() => const ProfileSettingScreen());
+        }
 
-  //         if (value.exists) {
-  //           print("Driver HOme Screen");
-  //         } else {
-  //           Get.offAll(() => DriverProfileSetup());
-  //         }
+        // if (value.exists) {
+        //   Get.offAll(() => HomeScreen());
+        // } else {
+        //   Get.offAll(() => ProfileSettingScreen());
+        // }
+      }).catchError((e) {
+        print("Error while decideRoute is $e");
+      });
+    }
+  }
 
-  //       }else{
-  //         if (value.exists) {
-  //           Get.offAll(() => HomeScreen());
-  //         } else {
-  //           Get.offAll(() => ProfileSettingScreen());
-  //         }
-  //       }
+  uploadImage(File image) async {
+    String imageUrl = "";
+    String fileName = Path.basename(image.path);
+    var reference = FirebaseStorage.instance.ref().child('users/$fileName');
+    UploadTask uploadTask = reference.putFile(image);
+    TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
+    await taskSnapshot.ref.getDownloadURL().then(
+      (value) {
+        imageUrl = value;
+        print('Download : $value');
+      },
+    );
+    return imageUrl;
+  }
 
-  //     }).catchError((e) {
-  //       print("Error while decideRoute is $e");
-  //     });
-  //   }
-  // }
+  storeUserInfo(File selectedImage, String name, String home, String contact,
+      String occupation) async {
+    String url = await uploadImage(selectedImage);
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    FirebaseFirestore.instance.collection('users').doc(uid).set({
+      'image': url,
+      'name': name,
+      'home_address': home,
+      'contact': contact,
+      'occupation': occupation,
+    }).then((value) {
+      isProfileUploading(false);
+      Get.to(() => const HomeScreen());
+    });
+  }
 
+  var myUser = UserModel(
+    
+  ).obs;
+
+  getUserInfo() {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(uid)
+        .snapshots()
+        .listen((event) {
+      myUser.value = UserModel.fromJson(event.data()!);
+    });
+  }
 }

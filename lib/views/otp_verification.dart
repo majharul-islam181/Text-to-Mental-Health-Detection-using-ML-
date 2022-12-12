@@ -10,14 +10,19 @@ import 'package:mental/widgets/green_intro_widget.dart';
 import '../widgets/otp_verfication_widget.dart';
 
 class OtoVerificationScreen extends StatefulWidget {
+  
   String phoneNumber;
   OtoVerificationScreen(this.phoneNumber);
+
+
   @override
   State<OtoVerificationScreen> createState() => _OtoVerificationScreenState();
 }
 
 class _OtoVerificationScreenState extends State<OtoVerificationScreen> {
-  AuthController authController = Get.put(AuthController());
+ 
+ 
+  AuthController authController = Get.find<AuthController>();
   @override
   void initState() {
     // TODO: implement initState
