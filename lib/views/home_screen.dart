@@ -29,25 +29,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       drawer: buildDrawer(),
-      
       appBar: AppBar(
         title: const Text('Home page'),
         // automaticallyImplyLeading: false,
         centerTitle: true,
       ),
-      body: Stack(
-        children: [
-          buildProfileTile(),
-
-          Text('Logged In'),
-        ],
+      body: Container(
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  
+                  Get.snackbar('tabbe', 'buutton pressed');
+                  
+                },
+                child: Text('next page')),
+            Text('Logged In'),
+          ],
+        ),
       ),
     );
   }
-
-  
 
   buildDrawer() {
     return Drawer(
@@ -68,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     width: 80,
                     height: 80,
-                    decoration:BoxDecoration(
+                    decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         // image: authController.myUser.value.image ==null? DecorationImage(
                         //   image: AssetImage('assets/person.png'),
@@ -81,8 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             : DecorationImage(
                                 image: NetworkImage(
                                     authController.myUser.value.image!),
-                                fit: BoxFit.fill)
-                        ),
+                                fit: BoxFit.fill)),
                   ),
                   const SizedBox(
                     width: 10,
@@ -222,81 +225,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: GoogleFonts.poppins(color: Colors.white),
                     ),
                   )
-                : Container()
+                : Container(),
           ],
         ),
       ),
     );
   }
-  
-Widget buildProfileTile() {
-    return Positioned(
-      top: 0,
-      left: 0,
-      right: 0,
-      child: Obx(() => authController.myUser.value.name == null
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : Container(
-              width: Get.width,
-              height: Get.width * 0.5,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              decoration: BoxDecoration(color: Colors.white70),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: authController.myUser.value.image == null
-                            ? DecorationImage(
-                                image: AssetImage('assets/person.png'),
-                                fit: BoxFit.fill)
-                            : DecorationImage(
-                                image: NetworkImage(
-                                    authController.myUser.value.image!),
-                                fit: BoxFit.fill)),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                              text: 'Good Morning, ',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 14)),
-                          TextSpan(
-                              text: authController.myUser.value.name,
-                              style: TextStyle(
-                                  color: Colors.green,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold)),
-                        ]),
-                      ),
-                      Text(
-                        "Where are you going?",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )),
-    );
-  }
-
-
-
 }

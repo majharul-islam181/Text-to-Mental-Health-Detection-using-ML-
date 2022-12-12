@@ -146,7 +146,6 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                       height: 10,
                     ),
                     TextFieldWidget(
-                      
                         'Contact', Icons.contact_phone, contactController,
                         (String? input) {
                       if (input!.isEmpty) {
@@ -176,10 +175,10 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                             if (!formKey.currentState!.validate()) {
                               return;
                             }
-                            if (selectedImage == null) {
-                              Get.snackbar("Wraning", 'Please add your image');
-                              return;
-                            }
+                            // if (selectedImage == null) {
+                            //   Get.snackbar("Wraning", 'Please add your image');
+                            //   return;
+                            // }
                             authController.isProfileUploading(true);
 
                             authController.storeUserInfo(
@@ -188,6 +187,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                                 homeController.text,
                                 contactController.text,
                                 occupationController.text);
+                            
                           })))
                   ],
                 ),

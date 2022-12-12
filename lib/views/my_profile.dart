@@ -82,11 +82,17 @@ class _MyProfile extends State<MyProfile> {
                           getImage(ImageSource.camera);
                         }),
                         child: selectedImage == null
-                            ? Container(
+                            ?authController.myUser.value.image!=null? Container(
                                 width: 120,
                                 height: 120,
                                 margin: const EdgeInsets.only(bottom: 20),
                                 decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(authController.myUser.value.image!),
+                                    fit: BoxFit.cover
+
+                                  ),
+                                  
                                     shape: BoxShape.circle,
                                     color: Color(0xffD6D6D6)),
                                 child: Center(
@@ -108,20 +114,20 @@ class _MyProfile extends State<MyProfile> {
                                     ),
                                     shape: BoxShape.circle,
                                     color: Color(0xffD6D6D6)),
-                              )),
-                    // : Container(
-                    //     width: 120,
-                    //     height: 120,
-                    //     margin: EdgeInsets.only(bottom: 20),
-                    //     decoration: BoxDecoration(
-                    //         image: DecorationImage(
-                    //             image: FileImage(selectedImage!),
-                    //             fit: BoxFit.fill),
-                    //         shape: BoxShape.circle,
-                    //         color: Color(0xffD6D6D6)),
-                    //   ),
+                              )
+                    : Container(
+                        width: 120,
+                        height: 120,
+                        margin: EdgeInsets.only(bottom: 20),
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: FileImage(selectedImage!),
+                                fit: BoxFit.fill),
+                            shape: BoxShape.circle,
+                            color: Color(0xffD6D6D6)),
+                      ),
                   ),
-                ],
+              )],
               ),
             ),
             const SizedBox(
@@ -193,18 +199,19 @@ class _MyProfile extends State<MyProfile> {
                             if (!formKey.currentState!.validate()) {
                               return;
                             }
-                            if (selectedImage == null) {
-                              Get.snackbar("Wraning", 'Please add your image');
-                              return;
-                            }
+                            // if (selectedImage == null) {
+                            //   Get.snackbar("Wraning", 'Please add your image');
+                            //   return;
+                            // }
                             authController.isProfileUploading(true);
 
                             authController.storeUserInfo(
-                                selectedImage!,
+                                selectedImage,
                                 nameController.text,
                                 homeController.text,
                                 contactController.text,
-                                occupationController.text);
+                                occupationController.text,
+                                url: authController.myUser.value.image??"");
                           })))
                   ],
                 ),

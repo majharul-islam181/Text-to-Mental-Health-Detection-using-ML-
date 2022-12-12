@@ -95,6 +95,7 @@ class AuthController extends GetxController {
           Get.to(() => const HomeScreen());
           print("Driver HOme Screen");
         } else {
+          log('dont have profile screen');
           Get.to(() => const ProfileSettingScreen());
         }
 
@@ -124,12 +125,17 @@ class AuthController extends GetxController {
     return imageUrl;
   }
 
-  storeUserInfo(File selectedImage, String name, String home, String contact,
-      String occupation) async {
-    String url = await uploadImage(selectedImage);
+  storeUserInfo(File? selectedImage, String name, String home, String contact,
+      String occupation,
+      {String url = ''}) async {
+    String url_new = url;
+    if (selectedImage != null) {
+       url_new = await uploadImage(selectedImage);
+    }
+
     String uid = FirebaseAuth.instance.currentUser!.uid;
     FirebaseFirestore.instance.collection('users').doc(uid).set({
-      'image': url,
+      'image': url_new,
       'name': name,
       'home_address': home,
       'contact': contact,
@@ -140,9 +146,7 @@ class AuthController extends GetxController {
     });
   }
 
-  var myUser = UserModel(
-    
-  ).obs;
+  var myUser = UserModel().obs;
 
   getUserInfo() {
     String uid = FirebaseAuth.instance.currentUser!.uid;
