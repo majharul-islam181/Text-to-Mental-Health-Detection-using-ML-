@@ -45,8 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   Get.snackbar('tabbe', 'buutton pressed');
                   
                 },
+                
                 child: Text('next page')),
             Text('Logged In'),
+             
+              
+          
           ],
         ),
       ),
@@ -111,11 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               ? "Mark"
                               : authController.myUser.value.name!,
                           style: GoogleFonts.poppins(
-                              fontSize: 20,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
+                          maxLines: 2,
                         )
                       ],
                     ),

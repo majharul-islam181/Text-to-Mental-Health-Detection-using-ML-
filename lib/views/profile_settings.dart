@@ -187,7 +187,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                                 homeController.text,
                                 contactController.text,
                                 occupationController.text);
-                            
+                           
                           })))
                   ],
                 ),
