@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mental/views/carousel.dart';
 import 'package:mental/views/my_profile.dart';
 
 import '../controller/auth_controller.dart';
@@ -36,26 +37,29 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       body: Container(
+        
         alignment: Alignment.center,
         child: Column(
+          
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  
-                  Get.snackbar('tabbe', 'buutton pressed');
-                  
-                },
-                
-                child: Text('next page')),
-            Text('Logged In'),
+            
+
+
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Carousel(),
+            )
              
-              
+             
           
           ],
         ),
-      ),
+      ),  
     );
   }
+
+
+
 
   buildDrawer() {
     return Drawer(
