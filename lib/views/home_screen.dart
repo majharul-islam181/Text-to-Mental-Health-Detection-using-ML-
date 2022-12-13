@@ -7,6 +7,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mental/views/carousel.dart';
 import 'package:mental/views/my_profile.dart';
+import 'package:mental/views/navbar/findadoctor.dart';
+import 'package:mental/views/navbar/innerHomePage.dart';
+import 'package:mental/views/navbar/settings.dart';
 
 import '../controller/auth_controller.dart';
 import '../utils/app_colors.dart';
@@ -20,6 +23,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   AuthController authController = Get.find<AuthController>();
+  int _currentIndex = 0;
+
+  final screens = [
+    iHomepage(),
+    findadoctor(),
+    settings(),
+  ];
 
   @override
   void initState() {
@@ -32,34 +42,39 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: buildDrawer(),
       appBar: AppBar(
-        title: const Text('Home page'),
+        title: const Text('Finda Doctor'),
         // automaticallyImplyLeading: false,
         centerTitle: true,
       ),
-      body: Container(
-        
-        alignment: Alignment.center,
-        child: Column(
-          
-          children: [
-            
+      bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize: 18,
+        type: BottomNavigationBarType.fixed,
 
-
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Carousel(),
-            )
-             
-             
-          
-          ],
-        ),
-      ),  
+        // backgroundColor: Colors.lightBlueAccent,
+        currentIndex: _currentIndex,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              activeIcon: Icon(Icons.add_home_work_sharp),
+              label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.ads_click),
+              activeIcon: Icon(Icons.content_paste_search_sharp),
+              label: 'Find A Doctor'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings_rounded),
+              // activeIcon: Icon(Icons.home_filled),
+              label: 'Settings'),
+        ],
+        onTap: ((value) {
+          setState(() {
+            _currentIndex = value;
+          });
+        }),
+      ),
+      body: screens[_currentIndex],
     );
   }
-
-
-
 
   buildDrawer() {
     return Drawer(
