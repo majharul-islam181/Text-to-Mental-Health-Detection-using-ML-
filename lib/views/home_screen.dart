@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mental/views/carousel.dart';
 import 'package:mental/views/my_profile.dart';
-import 'package:mental/views/navbar/findadoctor.dart';
+import 'package:mental/views/navbar/alldoctors.dart';
 import 'package:mental/views/navbar/innerHomePage.dart';
 import 'package:mental/views/navbar/settings.dart';
 
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final screens = [
     iHomepage(),
-    findadoctor(),
+    AllDoctor(),
     settings(),
   ];
 
@@ -41,11 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: buildDrawer(),
-      appBar: AppBar(
-        title: const Text('Finda Doctor'),
-        // automaticallyImplyLeading: false,
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Finda Doctor'),
+      //   // automaticallyImplyLeading: false,
+      //   centerTitle: true,
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 18,
         type: BottomNavigationBarType.fixed,
@@ -53,14 +53,15 @@ class _HomeScreenState extends State<HomeScreen> {
         // backgroundColor: Colors.lightBlueAccent,
         currentIndex: _currentIndex,
         items: [
-          BottomNavigationBarItem(
+          BottomNavigationBarItem( 
               icon: Icon(Icons.home),
               activeIcon: Icon(Icons.add_home_work_sharp),
+              
               label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.ads_click),
               activeIcon: Icon(Icons.content_paste_search_sharp),
-              label: 'Find A Doctor'),
+              label: 'All Doctors'),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings_rounded),
               // activeIcon: Icon(Icons.home_filled),
@@ -71,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = value;
           });
         }),
-      ),
+      ),          
       body: screens[_currentIndex],
     );
   }
@@ -159,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   // onPressed: () => Get.to(() => PaymentScreen()),
                 ),
                 buildDrawerItem(
-                    title: 'Ride History', onPressed: () {}, isVisible: true),
+                    title: 'History', onPressed: () {}, isVisible: true),
                 buildDrawerItem(title: 'Invite Friends', onPressed: () {}),
                 buildDrawerItem(title: 'Promo Codes', onPressed: () {}),
                 buildDrawerItem(title: 'Settings', onPressed: () {}),

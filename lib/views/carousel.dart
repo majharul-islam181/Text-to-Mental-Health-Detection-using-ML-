@@ -1,8 +1,11 @@
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+
 List<String> imgList = [
-  'assets/d1.jpg',
+  'assets/Hey (2).png',
   'assets/Hey (2).png',
   'assets/Hey (3).png',
   'assets/Hey (4).png',
@@ -36,6 +39,7 @@ class _CarouselState extends State<Carousel> {
           CarouselSlider(
             items: imgSlider,
             options: CarouselOptions(
+                height: 180,
                 viewportFraction: 0.95,
                 autoPlay: true,
                 enlargeCenterPage: true,
@@ -47,21 +51,25 @@ class _CarouselState extends State<Carousel> {
                 })),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: imgList.map((e) {
               int index = imgList.indexOf(e);
               return Container(
                 width: 8,
                 height: 8,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+                margin: EdgeInsets.only(left: 15, top: 10),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _currentIndex == index
-                        ? Color.fromRGBO(0, 0, 0, 0.9)
+                        ? Color.fromARGB(228, 22, 120, 233)
                         : Color.fromRGBO(0, 0, 0, .4)),
               );
             }).toList(),
           ),
+
+//
+
+        
         ],
       ),
     );
