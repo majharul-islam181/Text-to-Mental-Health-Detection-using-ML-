@@ -19,7 +19,7 @@ Widget loginWidget(CountryCode countryCode, Function onCountryChange, Function o
         ),
         textWidget(
             text: AppConstants.getMovingWithGreenTaxi,
-            fontSize: 24,
+            fontSize: 22,
             fontWeight: FontWeight.bold),
         const SizedBox(
           height: 30,

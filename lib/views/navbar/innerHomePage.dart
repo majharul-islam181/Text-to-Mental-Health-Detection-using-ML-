@@ -10,7 +10,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mental/utils/app_colors.dart';
 import '../carousel.dart';
 
-
 class iHomepage extends StatefulWidget {
   const iHomepage({super.key});
 
@@ -19,9 +18,6 @@ class iHomepage extends StatefulWidget {
 }
 
 class _iHomepageState extends State<iHomepage> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,7 +119,7 @@ class _iHomepageState extends State<iHomepage> {
                           ),
                           child: Row(
                             children: [
-                              Image.asset('assets/mental-health.png'),
+                              Image.asset('assets/bmi.png'),
                               Padding(
                                 padding: EdgeInsets.only(left: 16),
                                 child: Column(
@@ -131,7 +127,7 @@ class _iHomepageState extends State<iHomepage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Mental  ',
+                                      '  BMI  ',
                                       style: GoogleFonts.poppins(
                                         fontSize: 18,
                                       ),
@@ -168,7 +164,7 @@ class _iHomepageState extends State<iHomepage> {
                           ),
                           child: Row(
                             children: [
-                              Image.asset('assets/mental-health.png'),
+                              Image.asset('assets/medical-appointment.png'),
                               Padding(
                                 padding: EdgeInsets.only(left: 16),
                                 child: Column(
@@ -176,13 +172,13 @@ class _iHomepageState extends State<iHomepage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Mental  ',
+                                      'Appoinment',
                                       style: GoogleFonts.poppins(
-                                        fontSize: 18,
+                                        fontSize: 16,
                                       ),
                                     ),
                                     Text(
-                                      ' Expert  ',
+                                      ' Policy  ',
                                       style: GoogleFonts.poppins(
                                         fontSize: 18,
                                       ),
@@ -212,7 +208,7 @@ class _iHomepageState extends State<iHomepage> {
                           ),
                           child: Row(
                             children: [
-                              Image.asset('assets/mental-health.png'),
+                              Image.asset('assets/rate.png'),
                               Padding(
                                 padding: EdgeInsets.only(left: 16),
                                 child: Column(
@@ -220,13 +216,13 @@ class _iHomepageState extends State<iHomepage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Mental  ',
+                                      'Rating  ',
                                       style: GoogleFonts.poppins(
                                         fontSize: 18,
                                       ),
                                     ),
                                     Text(
-                                      ' Expert  ',
+                                      ' Point  ',
                                       style: GoogleFonts.poppins(
                                         fontSize: 18,
                                       ),
@@ -243,7 +239,6 @@ class _iHomepageState extends State<iHomepage> {
                 ],
               ),
             ),
-         
           ],
         ),
       ),

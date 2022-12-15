@@ -53,10 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
         // backgroundColor: Colors.lightBlueAccent,
         currentIndex: _currentIndex,
         items: [
-          BottomNavigationBarItem( 
+          BottomNavigationBarItem(
               icon: Icon(Icons.home),
               activeIcon: Icon(Icons.add_home_work_sharp),
-              
               label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.ads_click),
@@ -72,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = value;
           });
         }),
-      ),          
+      ),
       body: screens[_currentIndex],
     );
   }
@@ -146,6 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 ],
               )),
+            
             ),
           ),
           const SizedBox(
@@ -155,10 +155,6 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
               children: [
-                buildDrawerItem(
-                  title: 'Payment History', onPressed: () {},
-                  // onPressed: () => Get.to(() => PaymentScreen()),
-                ),
                 buildDrawerItem(
                     title: 'History', onPressed: () {}, isVisible: true),
                 buildDrawerItem(title: 'Invite Friends', onPressed: () {}),
