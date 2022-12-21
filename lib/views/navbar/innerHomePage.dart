@@ -1,13 +1,17 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, avoid_unnecessary_containers
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mental/BMI/hextoint.dart';
 import 'package:mental/utils/app_colors.dart';
+import '../../BMI/bmi.dart';
 import '../carousel.dart';
 
 class iHomepage extends StatefulWidget {
@@ -55,6 +59,16 @@ class _iHomepageState extends State<iHomepage> {
                   fontSize: 18,
                 ),
               ),
+            ),
+            // FloatingActionButton(
+            //   child: Text('click'),
+            //   onPressed: (() {
+            //     // Get.to(() => BmiPage());
+            //     // Get.to(() => BmiPage());
+            //   }),
+            // ),
+            SizedBox(
+              height: 15,
             ),
             Container(
               height: 144,
@@ -237,6 +251,93 @@ class _iHomepageState extends State<iHomepage> {
                     ],
                   )
                 ],
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Top Doctors',
+                    style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.blackColor),
+                  ),
+                  Text(
+                    'View all',
+                    style: GoogleFonts.poppins(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w200,
+                        color: AppColors.blackColor),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Container(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection("doctor")
+                            .snapshots(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<QuerySnapshot> snapshot) {
+                          if (snapshot.hasData) {
+                            final snap = snapshot.data!.docs;
+                            return ListView.builder(
+                              shrinkWrap: true,
+                              primary: false,
+                              itemCount: snap.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  height: 70,
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(bottom: 12),
+                                  decoration: BoxDecoration(
+                                   color: AppColors.whiteColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        offset: Offset(2, 2),
+                                        blurRadius: 10,
+                                      ),
+                                    ],
+                                  ),
+                                  child: ListTile(
+                                    title: Text(
+                                      snap[index]['name'],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: GoogleFonts.poppins(fontSize: 18),
+                                    ),
+                                    subtitle: Text(snap[index]['specialist ']),
+                                    leading: CircleAvatar(
+                                      backgroundImage:
+                                          NetworkImage(snap[index]['image']),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],

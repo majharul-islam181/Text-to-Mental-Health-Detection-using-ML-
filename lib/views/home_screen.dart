@@ -157,10 +157,10 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 buildDrawerItem(
                     title: 'History', onPressed: () {}, isVisible: true),
-                buildDrawerItem(title: 'Invite Friends', onPressed: () {}),
-                buildDrawerItem(title: 'Promo Codes', onPressed: () {}),
+                // buildDrawerItem(title: 'Do', onPressed: () {}),
+                // buildDrawerItem(title: 'Promo Codes', onPressed: () {}),
                 buildDrawerItem(title: 'Settings', onPressed: () {}),
-                buildDrawerItem(title: 'Support', onPressed: () {}),
+                // buildDrawerItem(title: 'Support', onPressed: () {}),
                 buildDrawerItem(
                     title: 'Log Out',
                     onPressed: () {

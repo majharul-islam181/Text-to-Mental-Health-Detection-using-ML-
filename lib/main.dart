@@ -8,6 +8,8 @@ import 'package:mental/firebase_options.dart';
 import 'package:mental/views/login_screen.dart';
 import 'package:mental/views/profile_settings.dart';
 
+import 'BMI/bmi.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home:  LoginScreen(),
     );
   }
 }
