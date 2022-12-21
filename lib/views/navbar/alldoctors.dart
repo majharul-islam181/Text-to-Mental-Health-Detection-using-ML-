@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mental/utils/app_colors.dart';
-import 'package:mental/views/doctor_details.dart';
+import 'package:mental/Doctor%20Details/doctor_details.dart';
 
 class AllDoctor extends StatefulWidget {
   const AllDoctor({Key? key}) : super(key: key);
@@ -133,13 +133,46 @@ class _MainScreenState extends State<AllDoctor> {
                 }
               },
             ),
-            FloatingActionButton(
-            child: Text('click here'),
-              
-              onPressed: (() {
-              Get.to(() => DoctorDetatls());
 
-            }))
+
+
+                GestureDetector(
+                onTap: (() {
+                   Get.to(() => DoctorDetatls());
+                  
+                }),
+                onLongPress: () => Get.snackbar('Better Aid', 'Stay connet with Better Aid'),
+                
+
+                child: Container(
+                  height: 50,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: const[
+                      BoxShadow(
+                        color: Colors.purple,
+                        spreadRadius: 1,
+                        blurRadius: 8,
+                        offset: Offset(-4,4),
+                      )
+                    ],
+              
+                  ),
+              
+              
+                  child: Center(child: Text('Search me on Google')),
+                ),
+              ),
+
+
+
+
+
+
+
+           
           ],
         ),
       ),
