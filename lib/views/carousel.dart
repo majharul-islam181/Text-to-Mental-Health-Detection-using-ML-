@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 
 List<String> imgList = [
-  'assets/Hey (2).png',
-  'assets/Hey (2).png',
-  'assets/Hey (3).png',
-  'assets/Hey (4).png',
+  'assets/3.png',
+  'assets/1.png',
+  'assets/2.png',
+  'assets/4.png',
 ];
 final List<Widget> imgSlider = imgList
     .map((e) => Container(

@@ -1,8 +1,10 @@
 // ignore_for_file: avoid_unnecessary_containers
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mental/utils/app_colors.dart';
 
@@ -33,7 +35,7 @@ class _DoctorDetatlsState extends State<DoctorDetatls> {
                   color: Colors.grey.shade300,
                   image: const DecorationImage(
                       image: NetworkImage(
-                          'https://www.doctorbangladesh.com/wp-content/uploads/Prof.-Brig.-Gen.-Dr.-Kumrul-Hasan.jpg')),
+                          'https://th.bing.com/th/id/R.2f0094500edb8892e60769e4271ec0d3?rik=BoPzMIV6CP8w0w&pid=ImgRaw&r=0')),
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: const [
                     BoxShadow(
@@ -52,16 +54,12 @@ class _DoctorDetatlsState extends State<DoctorDetatls> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                 
                   children: [
                     Text(
-                      'Dr. Aminul islam',
+                      'Dr. Jahangir Talukder',
                       style: GoogleFonts.poppins(
                           fontSize: 22, fontWeight: FontWeight.w500),
                     ),
-
-                   
-                    
                     Padding(
                       padding: const EdgeInsets.only(left: 115),
                       child: Row(
@@ -74,7 +72,6 @@ class _DoctorDetatlsState extends State<DoctorDetatls> {
                         ],
                       ),
                     ),
-                  
                   ],
                 ),
               ),
@@ -95,13 +92,17 @@ class _DoctorDetatlsState extends State<DoctorDetatls> {
                       style: GoogleFonts.poppins(
                           fontSize: 12, fontWeight: FontWeight.w300),
                     ),
-                   const SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       'Contact: 0179811512',
                       style: GoogleFonts.poppins(
                           fontSize: 18, fontWeight: FontWeight.w300),
                     ),
-                    const SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       'Location: Basundhara R/A',
                       style: GoogleFonts.poppins(
@@ -111,15 +112,19 @@ class _DoctorDetatlsState extends State<DoctorDetatls> {
                 ),
               ),
 
-               const SizedBox(height: 80,),
+              const SizedBox(
+                height: 80,
+              ),
 
               GestureDetector(
-                onTap: (() {}),
+                onTap: (() {
+                  Get.snackbar('Thank you!', 'team Better Aid');
+                }),
                 child: Container(
                   height: 50,
                   width: 150,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 27, 63, 169),
+                    color: AppColors.greyColor,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: const [
                       BoxShadow(
@@ -130,7 +135,11 @@ class _DoctorDetatlsState extends State<DoctorDetatls> {
                       )
                     ],
                   ),
-                  child: const Center(child: Text('Search me on Google')),
+                  child: GestureDetector(
+                      onTap: () {
+                        Get.snackbar('Thanks for your patient', 'BetterAid');
+                      },
+                      child: const Center(child: Text('Stay connect with us'))),
                 ),
               ),
             ],

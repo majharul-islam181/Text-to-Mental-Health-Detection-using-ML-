@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mental/views/carousel.dart';
+
 import 'package:mental/views/my_profile.dart';
 import 'package:mental/views/navbar/alldoctors.dart';
 import 'package:mental/views/navbar/innerHomePage.dart';
@@ -164,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 buildDrawerItem(
                     title: 'Log Out',
                     onPressed: () {
-                      // FirebaseAuth.instance.signOut();
+                      FirebaseAuth.instance.signOut();
                     }),
               ],
             ),

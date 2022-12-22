@@ -10,6 +10,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mental/BMI/hextoint.dart';
+import 'package:mental/Mental%20Expert/homepage.dart';
+import 'package:mental/Mental%20Expert/searchDoctor.dart';
+import 'package:mental/appointmentpolicy.dart';
 import 'package:mental/utils/app_colors.dart';
 import '../../BMI/bmi.dart';
 import '../carousel.dart';
@@ -26,7 +29,7 @@ class _iHomepageState extends State<iHomepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: SvgPicture.asset('assets/finda (3).svg'),
+        title: SvgPicture.asset('assets/bet.svg'),
         automaticallyImplyLeading: false,
       ),
       body: Container(
@@ -87,28 +90,35 @@ class _iHomepageState extends State<iHomepage> {
                             border: Border.all(
                                 color: AppColors.greenColor, width: 1),
                           ),
+
                           child: Row(
                             children: [
                               Image.asset('assets/mental-health.png'),
                               Padding(
                                 padding: EdgeInsets.only(left: 16),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Mental  ',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 18,
+                                child: GestureDetector(
+                                  
+                                  onTap: () {
+                                     Get.to(() => const MHomePage());
+                                  },
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Mental  ',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      ' Expert  ',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 18,
+                                      Text(
+                                        ' Expert  ',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               )
                             ],
@@ -116,46 +126,52 @@ class _iHomepageState extends State<iHomepage> {
                         ),
                       ),
                       Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(right: 8),
-                          padding: EdgeInsets.only(left: 16),
-                          height: 64,
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 50,
-                                  color: AppColors.whiteColor,
-                                  spreadRadius: 2)
-                            ],
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                                color: AppColors.greenColor, width: 1),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset('assets/bmi.png'),
-                              Padding(
-                                padding: EdgeInsets.only(left: 16),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '  BMI  ',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 18,
+                        child: GestureDetector(
+                          onTap: () {
+                                     Get.to(() => const BmiPage());
+                                  },
+
+                          child: Container(
+                            margin: EdgeInsets.only(right: 8),
+                            padding: EdgeInsets.only(left: 16),
+                            height: 64,
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 50,
+                                    color: AppColors.whiteColor,
+                                    spreadRadius: 2)
+                              ],
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                  color: AppColors.greenColor, width: 1),
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset('assets/bmi.png'),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 16),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '  BMI  ',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      ' Expert  ',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 18,
+                                      Text(
+                                        ' Expert  ',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -167,40 +183,45 @@ class _iHomepageState extends State<iHomepage> {
                   Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(right: 8),
-                          padding: EdgeInsets.only(left: 16),
-                          height: 64,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                                color: AppColors.greenColor, width: 1),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset('assets/medical-appointment.png'),
-                              Padding(
-                                padding: EdgeInsets.only(left: 16),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Appoinment',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 16,
+                        child: GestureDetector(
+                          onTap: (() {
+                             Get.to(() => const AppoimentPolicy());
+                          }),
+                          child: Container(
+                            margin: EdgeInsets.only(right: 8),
+                            padding: EdgeInsets.only(left: 16),
+                            height: 64,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                  color: AppColors.greenColor, width: 1),
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset('assets/medical-appointment.png'),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 16),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Appoinment',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      ' Policy  ',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 18,
+                                      Text(
+                                        ' Policy  ',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -304,7 +325,7 @@ class _iHomepageState extends State<iHomepage> {
                                   width: double.infinity,
                                   margin: const EdgeInsets.only(bottom: 12),
                                   decoration: BoxDecoration(
-                                   color: AppColors.whiteColor,
+                                   color: Color.fromARGB(255, 44, 188, 214),
                                     borderRadius: BorderRadius.circular(10),
                                     boxShadow: const [
                                       BoxShadow(
