@@ -1,4 +1,4 @@
-# mental
+# Text to Mental Health Detection using Machine Learning. 
 
 A new Flutter project.
 
