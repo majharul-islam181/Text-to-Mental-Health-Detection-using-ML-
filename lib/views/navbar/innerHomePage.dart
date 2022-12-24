@@ -2,16 +2,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mental/BMI/hextoint.dart';
 import 'package:mental/Mental%20Expert/homepage.dart';
-import 'package:mental/Mental%20Expert/searchDoctor.dart';
 import 'package:mental/appointmentpolicy.dart';
 import 'package:mental/utils/app_colors.dart';
 import '../../BMI/bmi.dart';
@@ -63,13 +58,7 @@ class _iHomepageState extends State<iHomepage> {
                 ),
               ),
             ),
-            // FloatingActionButton(
-            //   child: Text('click'),
-            //   onPressed: (() {
-            //     // Get.to(() => BmiPage());
-            //     // Get.to(() => BmiPage());
-            //   }),
-            // ),
+
             SizedBox(
               height: 15,
             ),
