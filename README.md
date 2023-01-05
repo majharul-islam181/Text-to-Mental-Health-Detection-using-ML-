@@ -1,8 +1,24 @@
 # Text to Mental Health Detection using Machine Learning. 
+## App name : BetterAid 🩺
 
-A new Flutter project.
+#
+## System architecture
 
-## Getting Started
+This is a mobile application-based health assistant with integrated machine-learning algorithms. From the app, users can log in and create a profile by undergoing an OTP verification. If already signed in, the user can directly log in to the homepage. After logging in, users will be directed to the homepage where they will have a mental health detection service, BMI calculator, and a panel for doctor’s information. Mental health experts detect mental health problems through machine-learning algorithms. To implement machine learning algorithms, we created a dataset from scratch. For the dataset, we have extracted social media texts through web scraping. “Instant Data Scraper” is used to extract the data from Reddit. Reddit is a great source of rich text-based quality datasets. Then we manually cleaned and annotated the data. Jupyter notebook is used as the source editor for the model implementations. We merged the dataset into a single dataset in the notebook. Removed stopwords, Tokenized, and used stemming techniques on the dataset. For feature extraction, TF-IDF is used. Pre-trained machine learning algorithms are used to train the model. XGBoost and Naive Bayes are implemented as machine learning models. The machine learning algorithm is integrated with a flask API to integrate the machine learning algorithm into the mobile app.
+
+#
+
+
+
+## Login 
+
+
+
+ <img src="https://user-images.githubusercontent.com/86792533/210851774-01a5bc85-f75b-40e5-82c9-e9a148b522f6.jpg" width="300"  /> <img src="https://user-images.githubusercontent.com/86792533/210851785-46a49064-7f05-4e46-b8ae-7b49fa403128.jpg" width="300"  height ="650"  />
+
+
+
+
 
 
 #
