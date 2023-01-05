@@ -18,6 +18,17 @@ This is a mobile application-based health assistant with integrated machine-lear
 
 
 
+#
+
+
+## Home Page 
+
+<img src="https://user-images.githubusercontent.com/86792533/210853161-30ca8a44-f33f-4102-a3d5-d372d927bcdf.png" width="300"  /> <img src="https://user-images.githubusercontent.com/86792533/210853095-3f020160-4352-4d60-ae69-ef8d377f5edd.png" width="300"  />
+
+## Doctor Information
+<img src="https://user-images.githubusercontent.com/86792533/210853272-16a8708c-35ff-4fbe-aa4b-c44b366a4562.png" width="300"  />
+
+
 
 
 
