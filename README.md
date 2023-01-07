@@ -13,8 +13,7 @@ This is a mobile application-based health assistant with integrated machine-lear
 ## Login & OTP Pannel
 
 
-
- <img src="https://user-images.githubusercontent.com/86792533/210851774-01a5bc85-f75b-40e5-82c9-e9a148b522f6.jpg" width="300"  /> <img src="https://user-images.githubusercontent.com/86792533/210851785-46a49064-7f05-4e46-b8ae-7b49fa403128.jpg" width="300"  height ="650"  />
+ <img src="https://user-images.githubusercontent.com/86792533/210851785-46a49064-7f05-4e46-b8ae-7b49fa403128.jpg" width="300"  height ="650"  />             <img src="https://user-images.githubusercontent.com/86792533/210851774-01a5bc85-f75b-40e5-82c9-e9a148b522f6.jpg" width="300"  />
 
 
 
@@ -39,6 +38,6 @@ This is a mobile application-based health assistant with integrated machine-lear
 
 
 
-## Suggested Doctor
+## Suggested Doctor using prediction part
 
 <img src="https://user-images.githubusercontent.com/86792533/210847781-f3bac60d-f27f-4dad-9b59-0e0692e17cff.jpg" width="300" /> <img src="https://user-images.githubusercontent.com/86792533/210847797-e43b3fb5-e90c-4553-9cf0-32b302854f79.jpg" width="300"  height ="650"  />
