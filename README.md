@@ -41,3 +41,10 @@ This is a mobile application-based health assistant with integrated machine-lear
 ## Suggested Doctor using prediction part
 
 <img src="https://user-images.githubusercontent.com/86792533/210847781-f3bac60d-f27f-4dad-9b59-0e0692e17cff.jpg" width="300" /> <img src="https://user-images.githubusercontent.com/86792533/210847797-e43b3fb5-e90c-4553-9cf0-32b302854f79.jpg" width="300"  height ="650"  />
+
+
+
+##doc- api
+https://github.com/majharul181/doc-api
+
+
